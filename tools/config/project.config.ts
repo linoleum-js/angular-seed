@@ -58,6 +58,9 @@ export class ProjectConfig extends SeedConfig {
 
     /* Add to or override NPM module configurations: */
     // this.PLUGIN_CONFIGS['browser-sync'] = { ghostMode: false };
+
+    // according to https://github.com/mgechev/angular-seed/wiki/Working-with-SASS
+    this.ENABLE_SCSS = true;
   }
 
 }
