@@ -45,6 +45,12 @@ export class UserService extends BaseApi {
       .catch(this.handleError);
   }
 
+  delete(id: number): Observable<any> {
+    return this.http.delete(`${UserService.BASE_URL}/users/${id}`)
+      .map((res: Response) => res.json())
+      .catch(this.handleError);
+  }
+
   /**
     * Handle HTTP error
     */

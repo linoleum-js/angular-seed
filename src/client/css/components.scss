@@ -1,4 +1,4 @@
-@mixin button--blue() {
+@mixin button() {
   background-color: #106cc8;
   border-style: none;
   color: rgba(255, 255, 255, 0.87);
@@ -10,3 +10,16 @@
   padding: 0 18px;
   text-decoration: none;
 }
+
+
+
+@mixin button--blue() {
+  @include button();
+  background-color: #106cc8;
+}
+
+@mixin button--red() {
+  @include button();
+  background-color: #ff5d56;
+}
+

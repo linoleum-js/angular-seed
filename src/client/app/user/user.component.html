@@ -85,7 +85,8 @@
     </div>
   </div>
 
-  <div class="user-profile__footer" *ngIf="creating">
-    <button class="button--save" (click)="createUser()">Create</button>
+  <div class="user-profile__footer">
+    <button *ngIf="creating" class="button--info" (click)="createUser()">Create</button>
+    <button *ngIf="!creating" class="button--delete" (click)="deleteUser()">Delete</button>
   </div>
 </div>

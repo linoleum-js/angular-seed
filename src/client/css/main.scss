@@ -63,10 +63,10 @@ textarea {
 }
 
 button,
-.button--blue {
+.button--info {
   @include button--blue();
 }
 
-button:hover {
-  background-color: #28739e;
+.button--delete {
+  @include button--red();
 }

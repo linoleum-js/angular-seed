@@ -86,4 +86,14 @@ export class UserComponent implements OnInit {
         error => this.errorMessage = <any>error
       );
   }
+
+  deleteUser() {
+    this.userService.delete(this.id)
+      .subscribe(
+        () => {
+          this.router.navigate([`/users`]);
+        },
+        error => this.errorMessage = <any>error
+      );
+  }
 }
