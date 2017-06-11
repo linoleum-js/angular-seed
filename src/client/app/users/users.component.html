@@ -2,7 +2,7 @@
   <li *ngFor="let user of users; let i = index;"
       class="users-item">
     <a
-        href="/users/{{i + 1}}/new"
+        routerLink='/users/{{i + 1}}/new'
         class="users-item__link"
     >
       <div>{{ user.name }}</div>
