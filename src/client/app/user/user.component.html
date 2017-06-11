@@ -1,64 +1,83 @@
-<div class="user-profile">
+<div *ngIf="pageLoading">
+  <div class="spinner">
+    <div class="rect1"></div>
+    <div class="rect2"></div>
+    <div class="rect3"></div>
+    <div class="rect4"></div>
+    <div class="rect5"></div>
+  </div>
+</div>
+
+<div class="user-profile" *ngIf="!pageLoading">
+  <div class="user-profile__message">
+    <div class="user-profile__message--success" *ngIf="dataSaved">
+      All changes has been saved
+    </div>
+    <div class="user-profile__message--error">{{ errorMessage }}</div>
+  </div>
+
   <div class="user-profile__section">
     <div class="user-profile__item">
-      <label>Name</label>
-      <input type="text" placeholder="Name" [(ngModel)]="user.name">
+      <label class="user-profile__label">Name</label>
+      <input type="text" placeholder="Name" [(ngModel)]="user.name" (change)="updateUser('name')">
     </div>
     <div class="user-profile__item">
-      <label>Username</label>
-      <input type="text" placeholder="Username" [(ngModel)]="user.username">
+      <label class="user-profile__label">Username</label>
+      <input type="text" placeholder="Username" [(ngModel)]="user.username" (change)="updateUser('username')">
     </div>
   </div>
 
   <div class="user-profile__section">
     <h2 class="user-profile__header">Contacts</h2>
     <div class="user-profile__item">
-      <label>Email</label>
-      <input type="text" placeholder="Email" [(ngModel)]="user.email">
+      <label class="user-profile__label">Email</label>
+      <input type="text" placeholder="Email" [(ngModel)]="user.email" (change)="updateUser('email')">
     </div>
     <div class="user-profile__item">
-      <label>Website</label>
-      <input type="text" placeholder="Website" [(ngModel)]="user.website">
+      <label class="user-profile__label">Website</label>
+      <input type="text" placeholder="Website" [(ngModel)]="user.website" (change)="updateUser('website')">
     </div>
     <div class="user-profile__item">
-      <label>Phone</label>
-      <input type="text" placeholder="Phone" [(ngModel)]="user.phone">
+      <label class="user-profile__label">Phone</label>
+      <input type="text" placeholder="Phone" [(ngModel)]="user.phone" (change)="updateUser('phone')">
     </div>
   </div>
 
   <div class="user-profile__section">
     <h2 class="user-profile__header">Company</h2>
     <div class="user-profile__item">
-      <label>Name</label>
-      <input type="text" placeholder="Name" [(ngModel)]="user.company.name">
+      <label class="user-profile__label">Name</label>
+      <input type="text" placeholder="Name" [(ngModel)]="user.company.name" (change)="updateUser('company')">
     </div>
     <div class="user-profile__item">
-      <label>Catch phrase</label>
-      <textarea type="text" placeholder="catch phrase" [(ngModel)]="user.company.catchPhrase"></textarea>
+      <label class="user-profile__label">Catch phrase</label>
+      <textarea type="text" placeholder="catch phrase" [(ngModel)]="user.company.catchPhrase" (change)="updateUser('company')">
+
+      </textarea>
     </div>
     <div class="user-profile__item">
-      <label>BS</label>
-      <input type="text" placeholder="bs" [(ngModel)]="user.company.bs">
+      <label class="user-profile__label">BS</label>
+      <input type="text" placeholder="bs" [(ngModel)]="user.company.bs" (change)="updateUser('company')">
     </div>
   </div>
 
   <div class="user-profile__section">
     <h2 class="user-profile__header">Address</h2>
     <div class="user-profile__item">
-      <label>Street</label>
-      <input type="text" placeholder="Street" [(ngModel)]="user.address.street">
+      <label class="user-profile__label">Street</label>
+      <input type="text" placeholder="Street" [(ngModel)]="user.address.street" (change)="updateUser('address')">
     </div>
     <div class="user-profile__item">
-      <label>Suite</label>
-      <input type="text" placeholder="Suite" [(ngModel)]="user.address.suite">
+      <label class="user-profile__label">Suite</label>
+      <input type="text" placeholder="Suite" [(ngModel)]="user.address.suite" (change)="updateUser('address')">
     </div>
     <div class="user-profile__item">
-      <label>City</label>
-      <input type="text" placeholder="City" [(ngModel)]="user.address.city">
+      <label class="user-profile__label">City</label>
+      <input type="text" placeholder="City" [(ngModel)]="user.address.city" (change)="updateUser('address')">
     </div>
     <div class="user-profile__item">
-      <label>Zipcode</label>
-      <input type="text" placeholder="Zipcode" [(ngModel)]="user.address.zipcode">
+      <label class="user-profile__label">Zipcode</label>
+      <input type="text" placeholder="Zipcode" [(ngModel)]="user.address.zipcode" (change)="updateUser('address')">
     </div>
     <div class="user-profile__item">
       <div class="map"></div>

@@ -35,6 +35,13 @@ export class UserService extends BaseApi {
                       .catch(this.handleError);
   }
 
+  update(id: number, data: any): Observable<any> {
+    return this.http.patch(`${UserService.BASE_URL}/users/${id}`, data)
+                      .map((res: Response) => res.json())
+      //              .do(data => console.log('server data:', data))  // debug
+                      .catch(this.handleError);
+  }
+
   /**
     * Handle HTTP error
     */

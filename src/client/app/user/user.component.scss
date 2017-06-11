@@ -3,11 +3,56 @@
   padding: 0 16px;
 }
 
-input {
-  width: 250px;
+input,
+textarea {
+  width: calc(100% - 150px);
 }
 
 ul {
   list-style-type: none;
   padding: 0 0 0 8px;
+}
+
+.user-profile {
+  width: 500px;
+  margin: 0 auto;
+  position: relative;
+
+  &__section {
+    padding-top: 20px;
+  }
+
+  &__item {
+    display: flex;
+    margin-bottom: 5px;
+  }
+
+  &__label {
+    line-height: 40px;
+    width: 150px;
+  }
+
+  &__header {
+    font-size: 16px;
+    height: 40px;
+    line-height: 40px;
+  }
+
+  &__section-footer {
+    justify-content: flex-end;
+    display: flex;
+  }
+
+  &__message {
+    position: fixed;
+    right: 50px;
+    top: 120px;
+    width: 120px;
+    background-color: #ffffff;
+    text-align: center;
+
+    &--success {
+      color: #49aa3c;
+    }
+  }
 }

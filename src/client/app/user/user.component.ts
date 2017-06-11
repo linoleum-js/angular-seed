@@ -13,9 +13,13 @@ import { UserService } from '../shared/user-service/user.service';
   styleUrls: ['user.component.css'],
 })
 export class UserComponent implements OnInit {
-  user: any = {};
+  user: any = { company: {}, address: {} };
   errorMessage: string;
+  pageLoading: boolean = false;
+  dataSaved: boolean = false;
   private sub: any;
+  private id: number;
+
 
   /**
    * @param {UserListService} userListService
@@ -26,7 +30,8 @@ export class UserComponent implements OnInit {
    */
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
-      this.loadUserData(Number.parseInt(params['id']));
+      this.id = Number.parseInt(params['id']);
+      this.loadUserData();
     });
   }
 
@@ -36,10 +41,25 @@ export class UserComponent implements OnInit {
 
   /**
    */
-  loadUserData(id: number) {
-    this.userService.get(id)
+  loadUserData() {
+    this.pageLoading = true;
+    this.userService.get(this.id)
       .subscribe(
-        user => this.user = user,
+        (user) => { this.user = user, this.pageLoading = false; },
+        (error) => { this.errorMessage = <any>error, this.pageLoading = false; }
+      );
+  }
+
+  updateUser(field: string) {
+    this.userService.update(this.id, { [field]: this.user[field] })
+      .subscribe(
+        (user) => {
+          this.user = user;
+          this.dataSaved = true;
+          setTimeout(() => {
+            this.dataSaved = false;
+          }, 3000);
+        },
         error => this.errorMessage = <any>error
       );
   }
