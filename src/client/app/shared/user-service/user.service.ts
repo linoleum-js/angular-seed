@@ -22,10 +22,17 @@ export class UserService extends BaseApi {
    * @return {string[]} The Observable for the HTTP request.
    */
   getList(): Observable<any[]> {
-    return this.http.get(UserService.BASE_URL + 'users')
+    return this.http.get(`${UserService.BASE_URL}/users`)
                     .map((res: Response) => res.json())
     //              .do(data => console.log('server data:', data))  // debug
                     .catch(this.handleError);
+  }
+
+  get(id: number): Observable<any> {
+    return this.http.get(`${UserService.BASE_URL}/users/${id}`)
+                      .map((res: Response) => res.json())
+      //              .do(data => console.log('server data:', data))  // debug
+                      .catch(this.handleError);
   }
 
   /**
