@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UsersListService } from '../shared/users-list/users-list.service';
+import { UserService } from '../shared/user-service/user.service';
 
 /**
  * This class represents the lazy loaded HomeComponent.
@@ -17,7 +17,7 @@ export class UsersComponent implements OnInit {
   /**
    * @param {UsersListService} usersListService
    */
-  constructor(public usersListService: UsersListService) {}
+  constructor(public userService: UserService) {}
 
   /**
    */
@@ -29,7 +29,7 @@ export class UsersComponent implements OnInit {
    * Handle the nameListService observable
    */
   getNames() {
-    this.usersListService.get()
+    this.userService.getList()
       .subscribe(
         users => this.users = users,
         error => this.errorMessage = <any>error

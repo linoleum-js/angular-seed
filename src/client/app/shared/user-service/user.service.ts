@@ -7,7 +7,7 @@ import { BaseApi } from '../base-api/base-api.service';
 /**
  */
 @Injectable()
-export class UsersListService extends BaseApi {
+export class UserService extends BaseApi {
 
   /**
    * @param {Http} http - The injected Http.
@@ -21,8 +21,8 @@ export class UsersListService extends BaseApi {
    * Returns an Observable for the HTTP GET request for the JSON resource.
    * @return {string[]} The Observable for the HTTP request.
    */
-  get(): Observable<string[]> {
-    return this.http.get(UsersListService.BASE_URL + 'users')
+  getList(): Observable<any[]> {
+    return this.http.get(UserService.BASE_URL + 'users')
                     .map((res: Response) => res.json())
     //              .do(data => console.log('server data:', data))  // debug
                     .catch(this.handleError);

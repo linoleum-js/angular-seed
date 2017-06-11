@@ -1,5 +1,7 @@
 <ul class="users-list">
-  <li *ngFor="let user of users" class="users-list__item">
-    {{ user.name }}
+  <li *ngFor="let user of users; let i = index;">
+    <a class="users-list__item" href="/users/1/new">
+      {{ user.name }}
+    </a>
   </li>
 </ul>
