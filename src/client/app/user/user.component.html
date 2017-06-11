@@ -9,6 +9,7 @@
 </div>
 
 <div class="user-profile" *ngIf="!pageLoading">
+  <h2 class="user-profile__header" *ngIf="creating">Creating new user</h2>
   <div class="user-profile__message">
     <div class="user-profile__message--success" *ngIf="dataSaved">
       All changes has been saved
@@ -82,5 +83,9 @@
     <div class="user-profile__item">
       <div class="map"></div>
     </div>
+  </div>
+
+  <div class="user-profile__footer" *ngIf="creating">
+    <button class="button--save" (click)="createUser()">Create</button>
   </div>
 </div>

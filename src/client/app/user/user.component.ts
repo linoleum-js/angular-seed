@@ -1,10 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { UserService } from '../shared/user-service/user.service';
 
 /**
- * This class represents the lazy loaded HomeComponent.
+ * This class represents the lazy loaded UserComponent.
  */
 @Component({
   moduleId: module.id,
@@ -17,6 +17,7 @@ export class UserComponent implements OnInit {
   errorMessage: string;
   pageLoading: boolean = false;
   dataSaved: boolean = false;
+  creating: boolean = false;
   private sub: any;
   private id: number;
 
@@ -24,14 +25,23 @@ export class UserComponent implements OnInit {
   /**
    * @param {UserListService} userListService
    */
-  constructor(public userService: UserService, private route: ActivatedRoute) {}
+  constructor(
+    public userService: UserService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   /**
    */
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
-      this.id = Number.parseInt(params['id']);
-      this.loadUserData();
+      const route = params['id'];
+      if (route === 'new') {
+        this.creating = true;
+      } else {
+        this.id = Number.parseInt(params['id']);
+        this.loadUserData();
+      }
     });
   }
 
@@ -51,6 +61,8 @@ export class UserComponent implements OnInit {
   }
 
   updateUser(field: string) {
+    if (this.creating) { return; }
+
     this.userService.update(this.id, { [field]: this.user[field] })
       .subscribe(
         (user) => {
@@ -59,6 +71,17 @@ export class UserComponent implements OnInit {
           setTimeout(() => {
             this.dataSaved = false;
           }, 3000);
+        },
+        error => this.errorMessage = <any>error
+      );
+  }
+
+  createUser() {
+    this.userService.create(this.user)
+      .subscribe(
+        (user) => {
+          this.user = user;
+          this.router.navigate([`/users/${user.id}`]);
         },
         error => this.errorMessage = <any>error
       );

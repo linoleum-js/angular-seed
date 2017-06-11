@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../shared/user-service/user.service';
 
 /**
- * This class represents the lazy loaded HomeComponent.
+ * This class represents the lazy loaded UsersComponent.
  */
 @Component({
   moduleId: module.id,
@@ -13,6 +13,7 @@ import { UserService } from '../shared/user-service/user.service';
 export class UsersComponent implements OnInit {
   users: any[] = [];
   errorMessage: string;
+  pageLoading: boolean = false;
 
   /**
    * @param {UsersListService} usersListService
@@ -22,26 +23,20 @@ export class UsersComponent implements OnInit {
   /**
    */
   ngOnInit() {
-    this.getNames();
+    this.loadUsers();
   }
 
   /**
-   * Handle the nameListService observable
    */
-  getNames() {
+  loadUsers() {
+    this.pageLoading = true;
     this.userService.getList()
       .subscribe(
-        users => this.users = users,
+        (users) => {
+          this.users = users;
+          this.pageLoading = false;
+        },
         error => this.errorMessage = <any>error
       );
   }
-
-  /**
-   * Pushes a new name onto the names array
-   * @return {boolean} false to prevent default form submit behavior to refresh the page.
-   */
-  addName(): boolean {
-    return false;
-  }
-
 }

@@ -23,23 +23,26 @@ export class UserService extends BaseApi {
    */
   getList(): Observable<any[]> {
     return this.http.get(`${UserService.BASE_URL}/users`)
-                    .map((res: Response) => res.json())
-    //              .do(data => console.log('server data:', data))  // debug
-                    .catch(this.handleError);
+      .map((res: Response) => res.json())
+      .catch(this.handleError);
   }
 
   get(id: number): Observable<any> {
     return this.http.get(`${UserService.BASE_URL}/users/${id}`)
-                      .map((res: Response) => res.json())
-      //              .do(data => console.log('server data:', data))  // debug
-                      .catch(this.handleError);
+      .map((res: Response) => res.json())
+      .catch(this.handleError);
   }
 
   update(id: number, data: any): Observable<any> {
     return this.http.patch(`${UserService.BASE_URL}/users/${id}`, data)
-                      .map((res: Response) => res.json())
-      //              .do(data => console.log('server data:', data))  // debug
-                      .catch(this.handleError);
+      .map((res: Response) => res.json())
+      .catch(this.handleError);
+  }
+
+  create(data: any = {}): Observable<any> {
+    return this.http.post(`${UserService.BASE_URL}/users`, data)
+      .map((res: Response) => res.json())
+      .catch(this.handleError);
   }
 
   /**

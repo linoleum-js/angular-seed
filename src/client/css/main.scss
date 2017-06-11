@@ -1,4 +1,5 @@
 @import "./spinner";
+@import "./components";
 
 html, body, div {
   border: 0;
@@ -61,16 +62,9 @@ textarea {
   resize: none;
 }
 
-button {
-  background-color: #106cc8;
-  border-style: none;
-  color: rgba(255, 255, 255, 0.87);
-  cursor: pointer;
-  display: inline-block;
-  font-size: 14px;
-  height: 40px;
-  padding: 8px 18px;
-  text-decoration: none;
+button,
+.button--blue {
+  @include button--blue();
 }
 
 button:hover {

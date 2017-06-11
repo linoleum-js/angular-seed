@@ -1,8 +1,18 @@
-<ul class="users-list">
+<div *ngIf="pageLoading">
+  <div class="spinner">
+    <div class="rect1"></div>
+    <div class="rect2"></div>
+    <div class="rect3"></div>
+    <div class="rect4"></div>
+    <div class="rect5"></div>
+  </div>
+</div>
+
+<ul class="users-list" *ngIf="!pageLoading">
   <li *ngFor="let user of users; let i = index;"
       class="users-item">
     <a
-        routerLink='/users/{{i + 1}}/new'
+        routerLink='/users/{{i + 1}}'
         class="users-item__link"
     >
       <div>{{ user.name }}</div>
@@ -10,3 +20,7 @@
     </a>
   </li>
 </ul>
+
+<div class="users-footer">
+  <a class="button--blue" [routerLink]="['/users/new']">Create user</a>
+</div>
