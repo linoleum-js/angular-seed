@@ -1,1 +1,67 @@
-<p>{{user.name}}</p>
+<div class="user-profile">
+  <div class="user-profile__section">
+    <div class="user-profile__item">
+      <label>Name</label>
+      <input type="text" placeholder="Name" [(ngModel)]="user.name">
+    </div>
+    <div class="user-profile__item">
+      <label>Username</label>
+      <input type="text" placeholder="Username" [(ngModel)]="user.username">
+    </div>
+  </div>
+
+  <div class="user-profile__section">
+    <h2 class="user-profile__header">Contacts</h2>
+    <div class="user-profile__item">
+      <label>Email</label>
+      <input type="text" placeholder="Email" [(ngModel)]="user.email">
+    </div>
+    <div class="user-profile__item">
+      <label>Website</label>
+      <input type="text" placeholder="Website" [(ngModel)]="user.website">
+    </div>
+    <div class="user-profile__item">
+      <label>Phone</label>
+      <input type="text" placeholder="Phone" [(ngModel)]="user.phone">
+    </div>
+  </div>
+
+  <div class="user-profile__section">
+    <h2 class="user-profile__header">Company</h2>
+    <div class="user-profile__item">
+      <label>Name</label>
+      <input type="text" placeholder="Name" [(ngModel)]="user.company.name">
+    </div>
+    <div class="user-profile__item">
+      <label>Catch phrase</label>
+      <textarea type="text" placeholder="catch phrase" [(ngModel)]="user.company.catchPhrase"></textarea>
+    </div>
+    <div class="user-profile__item">
+      <label>BS</label>
+      <input type="text" placeholder="bs" [(ngModel)]="user.company.bs">
+    </div>
+  </div>
+
+  <div class="user-profile__section">
+    <h2 class="user-profile__header">Address</h2>
+    <div class="user-profile__item">
+      <label>Street</label>
+      <input type="text" placeholder="Street" [(ngModel)]="user.address.street">
+    </div>
+    <div class="user-profile__item">
+      <label>Suite</label>
+      <input type="text" placeholder="Suite" [(ngModel)]="user.address.suite">
+    </div>
+    <div class="user-profile__item">
+      <label>City</label>
+      <input type="text" placeholder="City" [(ngModel)]="user.address.city">
+    </div>
+    <div class="user-profile__item">
+      <label>Zipcode</label>
+      <input type="text" placeholder="Zipcode" [(ngModel)]="user.address.zipcode">
+    </div>
+    <div class="user-profile__item">
+      <div class="map"></div>
+    </div>
+  </div>
+</div>

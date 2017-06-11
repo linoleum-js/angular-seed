@@ -26,7 +26,7 @@ export class UserComponent implements OnInit {
    */
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
-      this.loadUserData(+params['id']);
+      this.loadUserData(Number.parseInt(params['id']));
     });
   }
 
